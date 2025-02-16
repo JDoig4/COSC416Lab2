@@ -8,10 +8,10 @@ public class Gutter : MonoBehaviour
         Rigidbody ballRigidBody = triggeredBody.GetComponent<Rigidbody>();
         
         // Store the magnitude of the current velocity
-        float velocityMagnitude = ballRigidBody.velocity.magnitude;
+        float velocityMagnitude = ballRigidBody.linearVelocity.magnitude;
         
         // Stop the ball's current movement
-        ballRigidBody.velocity = Vector3.zero;
+        ballRigidBody.linearVelocity = Vector3.zero;
         ballRigidBody.angularVelocity = Vector3.zero;
         
         // Apply force to the ball in the forward direction with the stored velocity magnitude
