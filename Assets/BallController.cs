@@ -5,6 +5,7 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private float force = 1f;
     [SerializeField] private Transform ballAnchor;
+    [SerializeField] private Transform launchIndicator;
 
     private bool isBallLaunched;
     private Rigidbody ballRB;
@@ -25,6 +26,8 @@ public class BallController : MonoBehaviour
         if (isBallLaunched) return;
         isBallLaunched = true;
         transform.parent = null;
+        ballRB.AddForce(launchIndicator.forward * force, ForceMode.Impulse);
+        launchIndicator.gameObject.SetActive(false);
         ballRB.isKinematic = false;
         // sets the object to the outermost layer of the hierarchy
         ballRB.AddForce(transform.forward * force, ForceMode.Impulse);
